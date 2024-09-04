@@ -91,3 +91,61 @@ This means that the system has LocalLaunch, RemoteLaunch, LocalActivation, Remot
 If you find a COM object that you can access on behalf of a low-privileged user, for example, you can abuse it as follows:
 1. Create an instance and call the methods of that COM object to, for example, write an arbitrary file on behalf of the system.  For example, you have found a COM object with a `DeployCmdShell()` method that runs on behalf of the `NT AUTHORITY\SYSTEM` account and you have `LaunchPermissions` and `AccessPermissions`. You can start this COM object, call the `DeployCmdShell()` method, and get code execution on behalf of the system. You can view the available methods using `ClsidExplorer`.
 2. Abuse DCOM authentication. For this, see [RemoteKrbRelay](https://github.com/CICADA8-Research/RemoteKrbRelay/tree/main)
+
+## ComDiver
+
+
+
+## MonikerHound
+
+
+## ClsidExplorer
+### What is this
+ClsidExplorer allows you to retrieve information about a specific CLSID. The program outputs the following data:
+- `AppID` - ApplicationID of a specific COM Object;
+- `ProgID` - ProgID of a specific COM Object;
+- `PID` - PID in which this COM Object is running;
+- `Process Name` - the name of the PID process;
+- `Username` - name of the user on whose behalf the process is running;
+- `Methods` - available methods of the COM Object. Made by parsing TypeLib.
+
+```shell
+PS A:\ssd\gitrepo\COMThanasia\ClsidExplorer\x64\Debug> .\CLSIDExplorer.exe -h
+CLSIDExplorer.exe - identify all info by clsid
+Usage:
+.\CLSIDExplorer.exe --clsid "{00000618-0000-0010-8000-00aa006d2ea4}"
+```
+The program accepts only one argument:
+- `--clsid` - target CLSID to analyze
+
+### Example
+```shell
+PS A:\ssd\gitrepo\COMThanasia\ClsidExplorer\x64\Debug> .\CLSIDExplorer.exe --clsid "{00000618-0000-0010-8000-00aa006d2ea4}"
+[{00000618-0000-0010-8000-00aa006d2ea4}]
+        AppID: Unknown
+        ProgID: Unknown
+        PID: 1572
+        Process Name: CLSIDExplorer.exe
+        Username: WINPC\\Michael
+        Methods:
+        [0] __stdcall void QueryInterface(IN GUID*, OUT void**)
+        [1] __stdcall unsigned long AddRef()
+        [2] __stdcall unsigned long Release()
+        [3] __stdcall void GetTypeInfoCount(OUT unsigned int*)
+        [4] __stdcall void GetTypeInfo(IN unsigned int, IN unsigned long, OUT void**)
+        [5] __stdcall void GetIDsOfNames(IN GUID*, IN char**, IN unsigned int, IN unsigned long, OUT long*)
+        [6] __stdcall void Invoke(IN long, IN GUID*, IN unsigned long, IN unsigned short, IN DISPPARAMS*, OUT VARIANT*, OUT EXCEPINFO*, OUT unsigned int*)
+        [7] __stdcall BSTR Name()
+        [8] __stdcall void Name(IN BSTR)
+        [9] __stdcall RightsEnum GetPermissions(IN VARIANT, IN ObjectTypeEnum, IN VARIANT)
+        [10] __stdcall void SetPermissions(IN VARIANT, IN ObjectTypeEnum, IN ActionEnum, IN RightsEnum, IN InheritTypeEnum, IN VARIANT)
+        [11] __stdcall void ChangePassword(IN BSTR, IN BSTR)
+        [12] __stdcall Groups* Groups()
+        [13] __stdcall Properties* Properties()
+        [14] __stdcall _Catalog* ParentCatalog()
+        [15] __stdcall void ParentCatalog(IN _Catalog*)
+        [16] __stdcall void ParentCatalog(IN _Catalog*)
+[END]
+```
+
+## ComTraveller
