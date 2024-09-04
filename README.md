@@ -104,7 +104,8 @@ There are some examples:
 - https://github.com/0xlane/BypassUAC
 - https://github.com/Wh04m1001/IDiagnosticProfileUAC
 
-### Example
+### Usage
+Example:
 ```shell
 PS A:\ssd\gitrepo\COMThanasia\MonikerHound\x64\Debug> .\MonikerHound.exe
 
@@ -144,6 +145,10 @@ PID: 440
 DllHost.exe
 [+]........................[+]
 ```
+
+### How to abuse
+Once you have discovered potential candidates for UAC Bypass, you can start checking them out. As a great template for running Elevation Moniker, you can take [this function](https://github.com/CICADA8-Research/COMThanasia/blob/main/MonikerHound/MonikerHound/Source.cpp#L183), or this [program](https://github.com/0xlane/BypassUAC).
+
 
 ## ClsidExplorer
 ### What is this
@@ -193,5 +198,8 @@ PS A:\ssd\gitrepo\COMThanasia\ClsidExplorer\x64\Debug> .\CLSIDExplorer.exe --cls
         [16] __stdcall void ParentCatalog(IN _Catalog*)
 [END]
 ```
+
+### How to abuse
+This program is great for checking a COM class discovered with `ComTraveller` or `PermissionHunter` or `MonikerHound` for interesting methods that can be abused.
 
 ## ComTraveller
