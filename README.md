@@ -37,7 +37,7 @@ PS A:\mzhmo> .\PermissionHunter.exe -h
         From Michael Zhmaylo (MzHmO)
 
 PermissionHunter.exe
-Small tool that allow you to find vulnerable COM objects with incorrect LaunchPermission and ActivatePermission
+Small tool that allows you to find vulnerable COM objects with incorrect LaunchPermission and ActivatePermission
 
 [OPTIONS]
 -outfile : output filename
