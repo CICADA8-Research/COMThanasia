@@ -302,7 +302,6 @@ Example:
 ```shell
 .\ComTraveller.exe --file rep.csv --session 1
 ```
-![изображение](https://github.com/user-attachments/assets/820411a0-7bf9-4972-9a02-d30562329149)
 
 ![изображение](https://github.com/user-attachments/assets/1779405d-8314-44e4-bad6-abce7c421238)
 
@@ -320,6 +319,7 @@ There are several columns here:
 - `canCrossSessionActivate` - whether it is possible to abuse this COM class for LPE through activation in someone else's session. If value is `+` or the error is `ACCESS DENIED`, this could be a potential candidate for LPE.
 
 For example, if you apply filters, you will immediately find interesting COM classes :) Wow, is this a COM class that can be activated cross-sessionally and it works on behalf of the system? 
+![изображение](https://github.com/user-attachments/assets/820411a0-7bf9-4972-9a02-d30562329149)
 ![изображение](https://github.com/user-attachments/assets/517d3215-28b7-4e14-8010-9ff8e6253ec4)
 
 It should be noted that the program may crash due to the abundance of COM objects. In this case, you can restart it like this:
