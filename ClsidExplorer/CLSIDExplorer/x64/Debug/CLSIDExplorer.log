@@ -1,0 +1,12 @@
+﻿  main.cpp
+A:\SSD\gitrepo\COMThanasia\ClsidExplorer\CLSIDExplorer\Parser.h(19,2): warning C4091: static : пропускается слева от "Registry", когда ни одна переменная не объявлена
+A:\SSD\gitrepo\COMThanasia\ClsidExplorer\CLSIDExplorer\Parser.h(26,2): warning C4091: static : пропускается слева от "TypeLib", когда ни одна переменная не объявлена
+A:\SSD\gitrepo\COMThanasia\ClsidExplorer\CLSIDExplorer\Parser.h(36,2): warning C4091: static : пропускается слева от "Process", когда ни одна переменная не объявлена
+  Parser.cpp
+A:\SSD\gitrepo\COMThanasia\ClsidExplorer\CLSIDExplorer\Parser.h(19,2): warning C4091: static : пропускается слева от "Registry", когда ни одна переменная не объявлена
+A:\SSD\gitrepo\COMThanasia\ClsidExplorer\CLSIDExplorer\Parser.h(26,2): warning C4091: static : пропускается слева от "TypeLib", когда ни одна переменная не объявлена
+A:\SSD\gitrepo\COMThanasia\ClsidExplorer\CLSIDExplorer\Parser.h(36,2): warning C4091: static : пропускается слева от "Process", когда ни одна переменная не объявлена
+A:\SSD\gitrepo\COMThanasia\ClsidExplorer\CLSIDExplorer\Parser.cpp(221,24): warning C4018: <: несоответствие типов со знаком и без знака
+  Создание кода...
+A:\SSD\gitrepo\COMThanasia\ClsidExplorer\CLSIDExplorer\Parser.cpp(352): warning C4715: Process::GetPIDFromIUnknown: значение возвращается не при всех путях выполнения
+  CLSIDExplorer.vcxproj -> A:\SSD\gitrepo\COMThanasia\ClsidExplorer\x64\Debug\CLSIDExplorer.exe
