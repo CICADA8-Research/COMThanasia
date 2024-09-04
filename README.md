@@ -10,6 +10,78 @@ With this tool, you will be able to detect:
 
 If we had published this tool a couple months ago (e.g. Spring 2024), you would have discovered CVE-2024-38100 (FakePotato) and CVE-2024-38061 (SilverPotato).
 
-Start using this tool and you can find more ways to elevate privilege on Windows systems :)
+Start using this tool and you can find more ways to elevate privilege on Windows systems. It's like an automated OleViewDotnet :)
 
 ![изображение](https://github.com/user-attachments/assets/57dc0eaa-4fbf-47e7-a65a-e7d0ef5960d5)
+
+
+## PermissionHunter
+
+PermissionHunter is a tool that allows you to examine LaunchPermission and ActivatePermission on all COM objects on the system.
+
+```shell
+PS A:\mzhmo> .\PermissionHunter.exe -h
+
+                     ,
+                `-.   \    .-'
+        ,-"`````""-\__ |  /
+         '-.._    _.-'` '-o,
+             _>--:{{<   ) |)
+         .-''      '-.__.-o`
+        '-._____..-/`  |  \
+                ,-'   /    `-.
+                      `
+  PermissionHunter - hunt for incorrect LaunchPermission and ActivatePermission
+
+        CICADA8 Research Team
+        From Michael Zhmaylo (MzHmO)
+
+PermissionHunter.exe
+Small tool that allow you to find vulnerable COM objects with incorrect LaunchPermission and ActivatePermission
+
+[OPTIONS]
+-outfile : output filename
+-outformat : output format. Accepted 'csv' and 'xlsx'
+-h/--help : shows this windows
+```
+There are only two arguments here:
+- `-outfile` - name of the file with the rights report;
+- `-outformat` - format of the file with the report, you can output both in csv and xlsx. It is better to output in csv, because if you do not have Excel, you will not be able to output in xlsx format.
+
+Example:
+```shell
+PS A:\mzhmo> .\PermissionHunter -outfile result -outformat xlsx
+
+                     ,
+                `-.   \    .-'
+        ,-"`````""-\__ |  /
+         '-.._    _.-'` '-o,
+             _>--:{{<   ) |)
+         .-''      '-.__.-o`
+        '-._____..-/`  |  \
+                ,-'   /    `-.
+                      `
+  PermissionHunter - hunt for incorrect LaunchPermission and ActivatePermission
+
+        CICADA8 Research Team
+        From Michael Zhmaylo (MzHmO)
+
+[+] Result will be in result, format xlsx
+[+] Success
+```
+
+After that you will get a file result.xlsx, which will list all rights to existing COM objects.
+![изображение](https://github.com/user-attachments/assets/f72ec28c-02b5-40e0-a262-af842d58f94d)
+
+I output the following columns:
+- `ApplicationID` - ApplicationID of a specific COM object. Ex: `{69AD4AEE-51BE-439b-A92C-86AE490E8B30}`;
+- `ApplicationName` - ApplicationName of a specific COM object. Ex: `Background Intelligent Transfer Service`;
+- `RunAs` - RunAs registry key of a COM object. Ex: `Interactive User`;
+- `LaunchAccess`, `LaunchType`, `LaunchPrincipal`, `LaunchSid` - LaunchPermission registry key. LaunchPrincipal specifies the user who has LaunchAccess rights to the COM object. LaunchType - type of ACE: enabling or disabling. LaunchSID - SID of LaunchPrincipal. Ex:
+```shell
+LocalLaunch. RemoteLaunch. LocalActivation. RemoteActivation	AccessAllowed	NT AUTHORITY\SYSTEM	S-1-5-18
+```
+This means that the system has LocalLaunch, RemoteLaunch, LocalActivation, RemoteActivation permissions on this COM object;
+- `AccessAccess`, `AccessType`, `AccessPrincipal`, `AccessSID` - fields have the same meaning as LaunchPermissions, only in the context of AccessPermission;
+- `AuthLevel`, `ImpLevel` - Authentication Level and Impersonation Level. By default they are set to `RPC_C_AUTHN_LEVEL_CONNECT` and `RPC_C_IMP_LEVEL_IDENTIFY`;
+- `CLSIDs` - COM object CLSIDs.
