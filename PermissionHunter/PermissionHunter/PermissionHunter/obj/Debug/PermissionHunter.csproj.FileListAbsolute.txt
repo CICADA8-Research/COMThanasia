@@ -1,0 +1,7 @@
+A:\SSD\gitrepo\COMThanasia\PermissionHunter\PermissionHunter\PermissionHunter\obj\Debug\PermissionHunter.csproj.AssemblyReference.cache
+A:\SSD\gitrepo\COMThanasia\PermissionHunter\PermissionHunter\PermissionHunter\obj\Debug\PermissionHunter.csproj.CoreCompileInputs.cache
+A:\SSD\gitrepo\COMThanasia\PermissionHunter\PermissionHunter\PermissionHunter\bin\Debug\PermissionHunter.exe.config
+A:\SSD\gitrepo\COMThanasia\PermissionHunter\PermissionHunter\PermissionHunter\bin\Debug\PermissionHunter.exe
+A:\SSD\gitrepo\COMThanasia\PermissionHunter\PermissionHunter\PermissionHunter\bin\Debug\PermissionHunter.pdb
+A:\SSD\gitrepo\COMThanasia\PermissionHunter\PermissionHunter\PermissionHunter\obj\Debug\PermissionHunter.exe
+A:\SSD\gitrepo\COMThanasia\PermissionHunter\PermissionHunter\PermissionHunter\obj\Debug\PermissionHunter.pdb
