@@ -302,6 +302,8 @@ Example:
 ```shell
 .\ComTraveller.exe --file rep.csv --session 1
 ```
+![изображение](https://github.com/user-attachments/assets/820411a0-7bf9-4972-9a02-d30562329149)
+
 ![изображение](https://github.com/user-attachments/assets/1779405d-8314-44e4-bad6-abce7c421238)
 
 After that you will find a rep.csv file with information about COM objects. 
