@@ -304,6 +304,13 @@ Example:
 ```
 ![изображение](https://github.com/user-attachments/assets/1779405d-8314-44e4-bad6-abce7c421238)
 
-After that you will find a rep.csv file with information about COM objects.
+After that you will find a rep.csv file with information about COM objects. 
+
+
+It should be noted that the program may crash due to the abundance of COM objects. In this case, you can restart it like this:
+```shell
+.\ComTraveller.exe --file rep.csv --session 1 --from "{0006F071-0000-0000-C000-000000000046}"
+```
+![изображение](https://github.com/user-attachments/assets/0db19ec0-98d6-40fe-9403-0bf846c82993)
 
 
