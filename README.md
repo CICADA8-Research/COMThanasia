@@ -97,7 +97,53 @@ If you find a COM object that you can access on behalf of a low-privileged user,
 
 
 ## MonikerHound
+### What is this
+There is a built-in way to bypass UAC on a Windows system, this is done through Elevation Moniker. You can read more about it [here](https://learn.microsoft.com/en-us/windows/win32/com/the-com-elevation-moniker). This kind of UAC Bypass requires a non-standard way of registering the COM object in the registry, which is fairly easy to trace. So you can use my tool to find new ways of UAC Bypass.
 
+There are some examples:
+- https://github.com/0xlane/BypassUAC
+- https://github.com/Wh04m1001/IDiagnosticProfileUAC
+
+### Example
+```shell
+PS A:\ssd\gitrepo\COMThanasia\MonikerHound\x64\Debug> .\MonikerHound.exe
+
+
+          ,_  _  _,
+            \o-o/
+           ,(.-.),
+         _/ |) (| \_
+           /\=-=/\
+          ,| \=/ |,
+        _/ \  |  / \_
+            \_!_/
+
+ MonikerHound - find your own UAC Bypass!
+
+         CICADA8 Research Team
+         From Michael Zhmaylo (MzHmO)
+
+[+] Potential COM server for elevation moniker found!
+Name: CEIPLuaElevationHelper
+CLSID: {01D0A625-782D-4777-8D4E-547E6457FAD5}
+LocalizedString: @%systemroot%\system32\werconcpl.dll,-351
+Enabled: 1
+IconReference: @%systemroot%\system32\werconcpl.dll,-6
+Activate: Success
+PID: 15800
+DllHost.exe
+[+]........................[+]
+[+] Potential COM server for elevation moniker found!
+Name: CTapiLuaLib Class
+CLSID: {03e15b2e-cca6-451c-8fb0-1e2ee37a27dd}
+LocalizedString: @%systemroot%\system32\tapiui.dll,-1
+Enabled: 1
+IconReference: @%systemroot%\system32\tapiui.dll,-201
+Activate: Success
+PID: 440
+DllHost.exe
+[+]........................[+]
+```
 
 ## ClsidExplorer
 ### What is this
