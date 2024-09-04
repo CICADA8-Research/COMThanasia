@@ -93,7 +93,68 @@ If you find a COM object that you can access on behalf of a low-privileged user,
 2. Abuse DCOM authentication. For this, see [RemoteKrbRelay](https://github.com/CICADA8-Research/RemoteKrbRelay/tree/main)
 
 ## ComDiver
+### What is this
+All information about COM objects is in the registry. But what if the registration was incorrect? In such a case we have a possibility to override COM settings, for example, to hijack the executable file. 
 
+This tool allows you to detect such vulnerabilities, and it scans the registry according to the priority of keys that are viewed when searching for COM objects. In this way, you can even find Shadow COM Hijacking. The priority is as follows:
+```shell
+1. HKCU\Software\Classes\(GUID)\TreatAs 
+
+2. HKLM\Software\Classes\(GUID)\TreatAs
+
+3. HKCU\Software\Classes\(GUID)\InprocServer32
+
+4. HKLM\Software\Classes\(GUID)\InprocServer32 
+
+5. HKCU\Software\Classes\(GUID)\LocalServer32
+
+6. HKLM\Software\Classes\(GUID)\LocalServer32
+```
+
+Thus at least two vectors of privilege escalation emerge:
+1. If we have write permissions to `HKCU...TreatAs`, and the original COM executable is in `HKCU...LocalServer32`, then we can do Shadow COM Hijacking by writing our executable to `HKCU..TreatAs`.
+2. If the COM object lies in `HKCU..LocalServer32` and we can write to `HKCU..LocalServer32`, then we can do COM Hijacking
+
+Let's take a closer look at the tool:
+```shell
+PS A:\ssd\gitrepo\COMThanasia\ComDiver\x64\Debug> .\ComDiver.exe -h
+
+              \     /
+          \    o ^ o    /
+            \ (     ) /
+ ____________(%%%%%%%)____________
+(     /   /  )%%%%%%%(  \   \     )
+(___/___/__/           \__\___\___)
+   (     /  /(%%%%%%%)\  \     )
+    (__/___/ (%%%%%%%) \___\__)
+            /(       )\
+          /   (%%%%%)   \
+               (%%%)
+                 !
+
+----------- COM DIVER --------------
+[?] Small tool to check insecure registry and disk permissions on com objects
+[?] ARGS
+        -h/--help <- show this message
+        --from <CLSID> <- analyze CLSIDs from this clsid
+        --target <CLSID> <- analyze one target clsid
+        --no-context <- dont check another COM-server context. Only registry analyzing.
+        --no-create <- dont create target COM object. This is the fastest mode
+```
+It accepts the following arguments:
+- `--from` - there are a lot of CLSIDs on a Windows system. If you do not want the tool to look at all CLSIDs starting from the first, you can specify the CLSID to start with, for example, `--from {50FDBB99-5C92-495E-9E81-E2C2F48CDDA}`
+- `--target` - analyze specific clsid;
+- `--no-context` - do not check the name of the user on whose behalf the COM object is launched;
+- `--no-create` - not to create a COM object that has been detected. This limits the information you can get about it. However, this is the fastest way to examine only the registry rights.
+
+### Usage
+Example:
+```shell
+.\ComDiver.exe --no-create
+```
+![изображение](https://github.com/user-attachments/assets/737534c3-27b2-41cf-9987-a94019aadb2a)
+
+In this case we can see that there are no keys inside HKCU and we have write permissions to those keys. Accordingly, if we write our own value to this path, we will do COM Hijacking.
 
 
 ## MonikerHound
