@@ -89,5 +89,5 @@ This means that the system has LocalLaunch, RemoteLaunch, LocalActivation, Remot
 
 ### How to abuse
 If you find a COM object that you can access on behalf of a low-privileged user, for example, you can abuse it as follows:
-1. Create an instance and call the methods of that COM object to, for example, write an arbitrary file on behalf of the system.  For example, you have found a COM object with a `DeployCmdShell()` method that runs on behalf of the `NT AUTHORITY\SYSTEM` account and you have `LaunchPermissions` and `AccessPermissions`. You can start this COM object, call the `DeployCmdShell()` method, and get code execution on behalf of the system.
+1. Create an instance and call the methods of that COM object to, for example, write an arbitrary file on behalf of the system.  For example, you have found a COM object with a `DeployCmdShell()` method that runs on behalf of the `NT AUTHORITY\SYSTEM` account and you have `LaunchPermissions` and `AccessPermissions`. You can start this COM object, call the `DeployCmdShell()` method, and get code execution on behalf of the system. You can view the available methods using `ClsidExplorer`.
 2. Abuse DCOM authentication. For this, see [RemoteKrbRelay](https://github.com/CICADA8-Research/RemoteKrbRelay/tree/main)
