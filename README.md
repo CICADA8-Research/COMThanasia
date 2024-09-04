@@ -16,7 +16,7 @@ Start using this tool and you can find more ways to elevate privilege on Windows
 
 
 ## PermissionHunter
-
+### What is this
 PermissionHunter is a tool that allows you to examine LaunchPermission and ActivatePermission on all COM objects on the system.
 
 ```shell
@@ -48,6 +48,7 @@ There are only two arguments here:
 - `-outfile` - name of the file with the rights report;
 - `-outformat` - format of the file with the report, you can output both in csv and xlsx. It is better to output in csv, because if you do not have Excel, you will not be able to output in xlsx format.
 
+### Usage
 Example:
 ```shell
 PS A:\mzhmo> .\PermissionHunter -outfile result -outformat xlsx
@@ -85,3 +86,8 @@ This means that the system has LocalLaunch, RemoteLaunch, LocalActivation, Remot
 - `AccessAccess`, `AccessType`, `AccessPrincipal`, `AccessSID` - fields have the same meaning as LaunchPermissions, only in the context of AccessPermission;
 - `AuthLevel`, `ImpLevel` - Authentication Level and Impersonation Level. By default they are set to `RPC_C_AUTHN_LEVEL_CONNECT` and `RPC_C_IMP_LEVEL_IDENTIFY`;
 - `CLSIDs` - COM object CLSIDs.
+
+### How to abuse
+If you find a COM object that you can access on behalf of a low-privileged user, for example, you can abuse it as follows:
+1. Create an instance and call the methods of that COM object to, for example, write an arbitrary file on behalf of the system
+2. Abuse DCOM authentication. For this, see [RemoteKrbRelay](https://github.com/CICADA8-Research/RemoteKrbRelay/tree/main)
