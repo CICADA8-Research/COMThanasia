@@ -266,3 +266,51 @@ PS A:\ssd\gitrepo\COMThanasia\ClsidExplorer\x64\Debug> .\CLSIDExplorer.exe --cls
 This program is great for checking a COM class discovered with `ComTraveller` or `PermissionHunter` or `MonikerHound` for interesting methods that can be abused.
 
 ## ComTraveller
+### What is this
+ComTraveller - this tool allows you to explore all available COM objects. First, it allows you to quickly identify COM objects with interesting values (RunAs Interactive User), availability of TypeLib, and Cross-Session Activation capabilities. Thus, you can quickly detect objects that may be instantiated in another user session, leading to privilege escalation.
+
+```shell
+PS A:\ssd\gitrepo\COMThanasia\ComTraveller\x64\Debug> .\ComTraveller.exe -h
+
+        ,,_
+       zd$$??=
+     z$$P? F:`c,                _
+    d$$, `c'cc$$i           ,cd$?R
+   $$$$ cud$,?$$$i       ,=P"2?z "
+    $" " ?$$$,?$$$.    ,-''`>, bzP
+     'cLdb,?$$,?$$$   ,h' "I$'J$P
+  ... `?$$$,"$$,`$$h  $$PxrF'd$"
+d$PP""?-,"?$$,?$h`$$,,$$'$F44"
+?,,_`=4c,?=,"?hu?$`?L4$'? '
+   `""?==""=-"" `""-`'_,,,,
+           .ccu?m?e?JC,-,"=?
+                """=='?"
+
+ComTraveller - small tool to parse and extract information about all registered CLSIDs on the system
+Usage:
+--file <output> - output filename. Default: output.csv
+--from <clsid> - start exploring clsids from this clsid. (for ex. default enum from 1 to 9. with --from 4 will be from 4 to 9)
+--session <session> - use if you want to check Cross-Session Activation in a specific session. Useful only with 'Run as interactive user COM objects'
+-h/--help - shows this screen
+```
+- `--file` - name of the file to which information about COM objects will be output;
+- `--from` - there are a lot of CLSIDs on a Windows system. If you do not want the tool to look at all CLSIDs starting from the first, you can specify the CLSID to start with, for example, `--from {50FDBB99-5C92-495E-9E81-E2C2F48CDDA}`
+- `--session` - try to instantiate an object in someone else's session
+
+### Usage
+Example:
+```shell
+.\ComTraveller.exe --file rep.csv --session 1
+```
+![изображение](https://github.com/user-attachments/assets/1779405d-8314-44e4-bad6-abce7c421238)
+
+After that you will find a rep.csv file with information about COM objects. 
+
+
+It should be noted that the program may crash due to the abundance of COM objects. In this case, you can restart it like this:
+```shell
+.\ComTraveller.exe --file rep.csv --session 1 --from "{0006F071-0000-0000-C000-000000000046}"
+```
+![изображение](https://github.com/user-attachments/assets/0db19ec0-98d6-40fe-9403-0bf846c82993)
+
+
