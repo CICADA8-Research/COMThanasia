@@ -305,7 +305,17 @@ Example:
 ![изображение](https://github.com/user-attachments/assets/1779405d-8314-44e4-bad6-abce7c421238)
 
 After that you will find a rep.csv file with information about COM objects. 
-
+![изображение](https://github.com/user-attachments/assets/e6753aff-3ea0-4e48-add0-6e88ed451fc3)
+There are several columns here:
+- `CLSID` - CLSID of the COM object;
+- `AppId` - APPID of the COM object;
+- `ProgId` - APPID of COM object;
+- `RunAs` - value in the RunAs registry. If value is `The Interactive User` or `NT AUTHORITY\SYSTEM`, you can try to make LPE;
+- `Username` - name of the user on whose behalf the COM object is run;
+- `PID` - the PID in which the COM object is running;
+- `ProcessName` - name of the process in which the COM-object is running;
+- `HasTypeLib` - whether the COM-object has TypeLib. If it does, you can give this object to `ClsidExplorer` to see the available methods;
+- `canCrossSessionActivate` - whether it is possible to abuse this COM class for LPE through activation in someone else's session. If value is `+` or the error is `ACCESS DENIED`, this could be a potential candidate for LPE.
 
 It should be noted that the program may crash due to the abundance of COM objects. In this case, you can restart it like this:
 ```shell
