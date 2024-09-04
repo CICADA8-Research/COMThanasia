@@ -11,3 +11,5 @@ With this tool, you will be able to detect:
 If we had published this tool a couple months ago (e.g. Spring 2024), you would have discovered CVE-2024-38100 (FakePotato) and CVE-2024-38061 (SilverPotato).
 
 Start using this tool and you can find more ways to elevate privilege on Windows systems :)
+
+![изображение](https://github.com/user-attachments/assets/57dc0eaa-4fbf-47e7-a65a-e7d0ef5960d5)
