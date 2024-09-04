@@ -156,6 +156,8 @@ Example:
 
 In this case we can see that there are no keys inside HKCU and we have write permissions to those keys. Accordingly, if we write our own value to this path, we will do COM Hijacking.
 
+### How to abuse
+If you see red in lines in the tool output, this is a potential way to abuse a COM object! You can perform COM Hijacking (spoofing an existing executable), or Shadow COM Hijacking (spoofing a missing executable). Read more about COM Hijacking [here](https://book.hacktricks.xyz/windows-hardening/windows-local-privilege-escalation/com-hijacking)
 
 ## MonikerHound
 ### What is this
