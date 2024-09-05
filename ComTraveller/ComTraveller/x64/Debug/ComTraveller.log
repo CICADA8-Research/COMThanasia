@@ -1,6 +1,0 @@
-﻿  enumerator.cpp
-  main.cpp
-A:\SSD\gitrepo\COMThanasia\ComTraveller\ComTraveller\main.cpp(34,46): warning C4267: аргумент: преобразование из "size_t" в "DWORD"; возможна потеря данных
-  Создание кода...
-A:\SSD\gitrepo\COMThanasia\ComTraveller\ComTraveller\enumerator.cpp(261): warning C4715: GetPIDFromIUnknown: значение возвращается не при всех путях выполнения
-  ComTraveller.vcxproj -> A:\SSD\gitrepo\COMThanasia\ComTraveller\x64\Debug\ComTraveller.exe

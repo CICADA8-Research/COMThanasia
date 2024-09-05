@@ -1,7 +1,0 @@
-﻿  analyzer.cpp
-  argparse.cpp
-  enumerator.cpp
-  main.cpp
-  Создание кода...
-A:\SSD\gitrepo\COMThanasia\ComDiver\COMDiver\enumerator.cpp(225): warning C4715: GetPIDFromIUnknown: значение возвращается не при всех путях выполнения
-  COMDiver.vcxproj -> A:\SSD\gitrepo\COMThanasia\ComDiver\x64\Debug\ComDiver.exe

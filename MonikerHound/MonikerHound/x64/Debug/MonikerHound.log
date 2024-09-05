@@ -1,3 +1,0 @@
-﻿  Source.cpp
-A:\SSD\gitrepo\COMThanasia\MonikerHound\MonikerHound\Source.cpp(246): warning C4715: GetPIDFromIUnknown: значение возвращается не при всех путях выполнения
-  MonikerHound.vcxproj -> A:\SSD\gitrepo\COMThanasia\MonikerHound\x64\Debug\MonikerHound.exe
