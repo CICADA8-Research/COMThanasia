@@ -270,7 +270,7 @@ This program is great for checking a COM class discovered with `ComTraveller` or
 ComTraveller - this tool allows you to explore all available COM objects. First, it allows you to quickly identify COM objects with interesting values (RunAs Interactive User), availability of TypeLib, and Cross-Session Activation capabilities. Thus, you can quickly detect objects that may be instantiated in another user session, leading to privilege escalation.
 
 ```shell
-PS A:\ssd\gitrepo\COMThanasia\ComTraveller\x64\Debug> .\ComTraveller.exe -h
+PS A:\SSD\gitrepo\COMThanasia\ComTraveller\x64\Debug> .\ComTraveller.exe -h
 
         ,,_
        zd$$??=
@@ -291,11 +291,13 @@ Usage:
 --file <output> - output filename. Default: output.csv
 --from <clsid> - start exploring clsids from this clsid. (for ex. default enum from 1 to 9. with --from 4 will be from 4 to 9)
 --session <session> - use if you want to check Cross-Session Activation in a specific session. Useful only with 'Run as interactive user COM objects'
+--target <CLSID> - analyze this CLSID
 -h/--help - shows this screen
 ```
 - `--file` - name of the file to which information about COM objects will be output;
 - `--from` - there are a lot of CLSIDs on a Windows system. If you do not want the tool to look at all CLSIDs starting from the first, you can specify the CLSID to start with, for example, `--from {50FDBB99-5C92-495E-9E81-E2C2F48CDDA}`
 - `--session` - try to instantiate an object in someone else's session
+- `--target` - analyze only one target clsid
 
 ### Usage
 Example:
