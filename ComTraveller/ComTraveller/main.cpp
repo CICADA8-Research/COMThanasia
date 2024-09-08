@@ -106,6 +106,7 @@ d$PP""?-,"?$$,?$h`$$,,$$'$F44"
 	std::wcout << L"--file <output> - output filename. Default: output.csv" << std::endl;
 	std::wcout << L"--from <clsid> - start exploring clsids from this clsid. (for ex. default enum from 1 to 9. with --from 4 will be from 4 to 9)" << std::endl;
 	std::wcout << L"--session <session> - use if you want to check Cross-Session Activation in a specific session. Useful only with 'Run as interactive user COM objects'" << std::endl;
+	std::wcout << L"--target <CLSID> - analyze this CLSID" << std::endl;
 	std::wcout << L"-h/--help - shows this screen" << std::endl;
 }
 
@@ -113,6 +114,7 @@ int wmain(int argc, wchar_t* argv[])
 {
 	setlocale(LC_ALL, "");
 	std::wstring startFromCLSID;
+	std::wstring targetCLSID;
 	std::wstring outputFilename = L"output.csv";
 	DWORD session = 0;
 
@@ -126,6 +128,10 @@ int wmain(int argc, wchar_t* argv[])
 		else if (std::wstring(argv[i]) == L"--session" && i + 1 < argc) {
 			session = _wtoi(argv[i + 1]);
 		}
+		else if (std::wstring(argv[i]) == L"--target" && i + 1 < argc)
+		{
+			targetCLSID = argv[i + 1];
+		}
 		else if (((std::wstring(argv[i]) == L"-h") || (std::wstring(argv[i]) == L"--help")))
 		{
 			ShowHelp();
@@ -136,6 +142,7 @@ int wmain(int argc, wchar_t* argv[])
 	std::wcout << L"[COM Traveller] Starting......." << std::endl;
 	std::wcout << L"[COM Traveller] Params:" << std::endl;
 	std::wcout << L"[Initial CLSID. Empty -> not specified] " << startFromCLSID << std::endl;
+	std::wcout << L"[Target CLSID. Empty -> not specified] " << targetCLSID << std::endl;
 	std::wcout << L"[Output FileName] " << outputFilename << std::endl;
 	std::wcout << L"[Activate in session. 0 -> dont checking] " << session << std::endl;
 	Sleep(1000);
@@ -175,7 +182,16 @@ int wmain(int argc, wchar_t* argv[])
 	}
 
 	CoInitialize(NULL);
-	std::vector<std::wstring> clsidList = EnumerateCLSID();
+	
+	std::vector<std::wstring> clsidList;
+	if (targetCLSID.empty())
+	{
+		clsidList = EnumerateCLSID();
+	}
+	else
+	{
+		clsidList.push_back(targetCLSID);
+	}
 
 	std::vector<std::wstring> clsidBlackList;
 
